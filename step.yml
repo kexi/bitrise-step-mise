@@ -87,6 +87,17 @@ inputs:
         - "yes"
         - "no"
 
+  - github_token: ""
+    opts:
+      title: GitHub Token
+      summary: GitHub token to avoid API rate limiting
+      description: |
+        Optional GitHub token to authenticate API requests.
+        This helps avoid 403 rate limit errors when installing tools
+        that are downloaded from GitHub (e.g., pnpm, deno, etc.).
+      is_required: false
+      is_sensitive: true
+
 outputs:
   - MISE_BIN_PATH: ""
     opts:

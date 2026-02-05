@@ -41,6 +41,18 @@ validate_yes_no "${use_shims}" "use_shims"
 log_done "Input validation completed"
 
 # ==============================================================================
+# Set up GitHub Token
+# ==============================================================================
+
+has_github_token=$([[ -n "${github_token}" ]] && echo "true" || echo "false")
+if [[ "${has_github_token}" == "true" ]]; then
+    log_info "Setting up GitHub token for API requests..."
+    export GITHUB_TOKEN="${github_token}"
+    envman add --key GITHUB_TOKEN --value "${github_token}"
+    log_done "GitHub token configured"
+fi
+
+# ==============================================================================
 # Install mise
 # ==============================================================================
 
