@@ -10,6 +10,16 @@ website: https://github.com/kexi/bitrise-step-mise
 source_code_url: https://github.com/kexi/bitrise-step-mise
 support_url: https://github.com/kexi/bitrise-step-mise/issues
 
+project_type_tags:
+  - ios
+  - macos
+  - android
+  - xamarin
+  - react-native
+  - cordova
+  - ionic
+  - flutter
+
 type_tags:
   - utility
   - installer
