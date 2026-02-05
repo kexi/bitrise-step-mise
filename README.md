@@ -36,6 +36,7 @@ workflows:
 | `run_install` | `yes` | Whether to run `mise install` after installation. |
 | `working_dir` | `$BITRISE_SOURCE_DIR` | The directory where mise commands will be executed. |
 | `use_shims` | `yes` | Whether to add the mise shims directory to PATH. |
+| `github_token` | (empty) | GitHub token to avoid API rate limiting when installing tools from GitHub. |
 
 ## Outputs
 
@@ -89,6 +90,17 @@ If no configuration file is found, `mise trust` and `mise install` will be skipp
     title: Install mise
     inputs:
       - working_dir: "$BITRISE_SOURCE_DIR/frontend"
+```
+
+### With GitHub Token (Avoid Rate Limiting)
+
+When installing tools from GitHub (e.g., pnpm, deno), you may hit API rate limits. Use a GitHub token to avoid 403 errors:
+
+```yaml
+- git::https://github.com/kexi/bitrise-step-mise.git@main:
+    title: Install mise
+    inputs:
+      - github_token: "$GITHUB_ACCESS_TOKEN"
 ```
 
 ## Local Testing
