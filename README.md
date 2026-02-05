@@ -94,7 +94,16 @@ If no configuration file is found, `mise trust` and `mise install` will be skipp
 
 ### With GitHub Token (Avoid Rate Limiting)
 
-When installing tools from GitHub (e.g., pnpm, deno), you may hit API rate limits. Use a GitHub token to avoid 403 errors:
+When installing tools from GitHub (e.g., pnpm, deno), you may hit API rate limits (403 errors).
+
+mise automatically reads the `GITHUB_TOKEN` environment variable. If you already have `GITHUB_TOKEN` set in your Bitrise secrets, it will just work:
+
+```yaml
+- git::https://github.com/kexi/bitrise-step-mise.git@main:
+    title: Install mise
+```
+
+If you want to use a different variable name, use the `github_token` input:
 
 ```yaml
 - git::https://github.com/kexi/bitrise-step-mise.git@main:
