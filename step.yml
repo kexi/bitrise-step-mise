@@ -78,14 +78,14 @@ inputs:
         - "no"
 
 outputs:
-  - MISE_BIN_PATH:
+  - MISE_BIN_PATH: ""
     opts:
       title: mise binary path
       summary: The path to the mise binary
       description: |
         The full path to the installed mise binary.
 
-  - MISE_SHIMS_PATH:
+  - MISE_SHIMS_PATH: ""
     opts:
       title: mise shims path
       summary: The path to the mise shims directory
