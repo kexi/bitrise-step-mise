@@ -1,0 +1,94 @@
+title: Install mise
+summary: Install mise (formerly rtx) - a polyglot runtime manager
+description: |
+  This step installs mise, a polyglot runtime manager that can manage
+  multiple language runtimes like Node.js, Python, Ruby, Go, and more.
+
+  mise is a replacement for tools like nvm, pyenv, rbenv, etc.
+
+website: https://github.com/kexi/bitrise-step-mise
+source_code_url: https://github.com/kexi/bitrise-step-mise
+support_url: https://github.com/kexi/bitrise-step-mise/issues
+
+type_tags:
+  - utility
+  - installer
+
+is_requires_admin_user: false
+is_always_run: false
+is_skippable: false
+
+toolkit:
+  bash:
+    entry_file: main.sh
+
+inputs:
+  - mise_version: "latest"
+    opts:
+      title: mise version
+      summary: The version of mise to install
+      description: |
+        Specify the version of mise to install.
+        Use "latest" to install the latest stable version.
+      is_required: false
+
+  - run_trust: "yes"
+    opts:
+      title: Run mise trust
+      summary: Whether to run 'mise trust' after installation
+      description: |
+        If set to "yes", runs 'mise trust' to trust the configuration file
+        in the working directory.
+      is_required: false
+      value_options:
+        - "yes"
+        - "no"
+
+  - run_install: "yes"
+    opts:
+      title: Run mise install
+      summary: Whether to run 'mise install' after installation
+      description: |
+        If set to "yes", runs 'mise install' to install all tools
+        defined in the configuration file.
+      is_required: false
+      value_options:
+        - "yes"
+        - "no"
+
+  - working_dir: "$BITRISE_SOURCE_DIR"
+    opts:
+      title: Working directory
+      summary: The directory where mise commands will be executed
+      description: |
+        The working directory for running mise trust and mise install commands.
+        Defaults to the Bitrise source directory.
+      is_required: false
+
+  - use_shims: "yes"
+    opts:
+      title: Use shims
+      summary: Whether to add mise shims directory to PATH
+      description: |
+        If set to "yes", adds the mise shims directory to PATH.
+        This allows using installed tools directly without 'mise exec'.
+      is_required: false
+      value_options:
+        - "yes"
+        - "no"
+
+outputs:
+  - MISE_BIN_PATH:
+    opts:
+      title: mise binary path
+      summary: The path to the mise binary
+      description: |
+        The full path to the installed mise binary.
+
+  - MISE_SHIMS_PATH:
+    opts:
+      title: mise shims path
+      summary: The path to the mise shims directory
+      description: |
+        The path to the mise shims directory.
+        Tools installed by mise can be accessed via this directory.
